@@ -6,14 +6,14 @@ import {
 } from "react-icons/fi";
 
 const Pagination = ({
-  resultFromApi,
+  apiResult,
   postPerPage,
   currentPage,
   setcurrentPage,
 }) => {
   const PaginationNumber = [];
 
-  for (let i = 1; i < Math.ceil(resultFromApi.length / postPerPage); i++) {
+  for (let i = 1; i < Math.ceil(apiResult.length / postPerPage); i++) {
     PaginationNumber.push(i);
   }
 

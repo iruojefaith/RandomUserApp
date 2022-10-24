@@ -4,13 +4,13 @@ import Pagination from "../../utils/pagination";
 import { BsTelephone } from "react-icons/bs";
 import {MdOutlineEmail } from "react-icons/md"
 
-const Users = ({ resultFromApi }) => {
+const Users = ({ apiResult }) => {
   const [postPerPage] = useState(10);
   const [currentPage, setcurrentPage] = useState(1);
 
   const indexOfLastPage = postPerPage * currentPage; // 10
   const indexOfFirstPage = indexOfLastPage - postPerPage; // 0
-  const ModifiedUserstate = resultFromApi?.slice(
+  const ModifiedUserstate = apiResult?.slice(
     indexOfFirstPage,
     indexOfLastPage
   ); // (0, 5)
@@ -21,16 +21,17 @@ const Users = ({ resultFromApi }) => {
         <h2>List of all Users</h2>
       </div>
       {ModifiedUserstate.length !== 0 ? (
-        <div>
+        <div >
           <div style={{ margin: "0 1em" }}>
+          <div className="user-page-container">
             {ModifiedUserstate.map((data, index) => {
               return (
-                <div key={index}>
-                  <div className="profile-tile">
-                    <div className="pic-tile">
+                <div key={index} >
+                  <div className="profile-title">
+                    <div className="pic-title">
                       <img src={data.picture.medium} alt="dp" />
                     </div>
-                    <div className="info-tile">
+                    <div className="info-title">
                       <h4>
                         {data.name.last} {data.name.first}
                       </h4>
@@ -46,10 +47,11 @@ const Users = ({ resultFromApi }) => {
                 </div>
               );
             })}
+            </div>
           </div>
           <Pagination
             currentPage={currentPage}
-            resultFromApi={resultFromApi} // All the 100 Result
+            apiResult={apiResult} // to total amount of 100 result from
             setcurrentPage={setcurrentPage} // Current Page
             postPerPage={postPerPage} // Post per page
           />
@@ -57,7 +59,7 @@ const Users = ({ resultFromApi }) => {
           <br />
         </div>
       ) : (
-        <h1 style={{ textAlign: "center", margin: "1em 0" }}>Loading ....</h1>
+        <div className="loader"></div>
       )}
     </>
   );

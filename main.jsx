@@ -16,7 +16,7 @@ import "./style/index.css";
 const RandomUserAPI = "https://randomuser.me/api/?results=50";
 
 const IndexPage = () => {
-  const [resultFromApi, setResultFromApi] = useState([]);
+  const [apiResult, setApiResult] = useState([]);
 
   useEffect(() => {
     FetchAPIFromServer();
@@ -33,18 +33,18 @@ const IndexPage = () => {
     },
     {
       path: "/users",
-      element: <Users resultFromApi={resultFromApi} />,
+      element: <Users apiResult={apiResult} />,
     },
     {
       path: "/users/:id",
-      element: <User resultFromApi={resultFromApi} />,
+      element: <User apiResult={apiResult} />,
     },
   ]);
 
   const FetchAPIFromServer = async () => {
     const response = await fetch(RandomUserAPI);
     const result = await response.json();
-    setResultFromApi(result.results);
+    setApiResult(result.results);
   };
 
   return <RouterProvider router={router} />;

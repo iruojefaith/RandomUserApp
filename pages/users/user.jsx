@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { BsTelephone } from "react-icons/bs";
 
-const Users = ({ resultFromApi }) => {
+const Users = ({ apiResult }) => {
   let { id } = useParams();
 
-  const NewFilteredArray = resultFromApi.find((val) => val.login.uuid === id);
+  const NewFilteredArray = apiResult.find((val) => val.login.uuid === id);
 
   return (
     <>
@@ -43,7 +43,7 @@ const Users = ({ resultFromApi }) => {
           </div>
         </>
       ) : (
-        <h1 style={{ textAlign: "center", margin: "1em 0" }}>Loading ....</h1>
+        <div className="loader"></div>
       )}
     </>
   );
