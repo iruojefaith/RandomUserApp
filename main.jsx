@@ -9,7 +9,7 @@ import App from "./pages/Home";
 import Users from "./pages/users";
 import User from "./pages/users/user";
 import ErrorPage from "./pages/Error";
-
+import ThemeContextWrapper from './Darkmode/themeContextWrapper';
 // CSS
 import "./style/index.css";
 
@@ -51,7 +51,9 @@ const IndexPage = () => {
 };
 
 ReactDOM.createRoot(document.getElementById("root")).render(
+   <ThemeContextWrapper>
   <React.StrictMode>
     <IndexPage />
   </React.StrictMode>
+  </ThemeContextWrapper>
 );

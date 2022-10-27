@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "../../utils/pagination";
 import { BsTelephone } from "react-icons/bs";
-import {MdOutlineEmail } from "react-icons/md"
+import {MdOutlineEmail } from "react-icons/md";
+import { Button, Container, InputGroup } from 'reactstrap';
+import { ThemeContext, themes } from '../../Darkmode/themeContext';
+import  '../../Darkmode/darkmode.css'
 
 const Users = ({ apiResult }) => {
   const [postPerPage] = useState(10);
   const [currentPage, setcurrentPage] = useState(1);
-
+   const [darkMode, setDarkMode] = React.useState(true);
   const indexOfLastPage = postPerPage * currentPage; // 10
   const indexOfFirstPage = indexOfLastPage - postPerPage; // 0
   const ModifiedUserstate = apiResult?.slice(
@@ -17,9 +20,32 @@ const Users = ({ apiResult }) => {
 
   return (
     <>
-      <div className="user-title-text">
+      {/* <div className="user-title-text">
         <h2>List of all Users</h2>
-      </div>
+      </div> */}
+      <header className="App-header">
+
+        <h3>
+            RU
+        </h3>
+        <Link to={`/`}>Home</Link>
+        <InputGroup>
+          <ThemeContext.Consumer>
+            {({ changeTheme }) => (
+              <Button
+                color="link"
+                onClick={() => {
+                  setDarkMode(!darkMode);
+                  changeTheme(darkMode ? themes.light : themes.dark);
+                }}
+              >
+                <i className={darkMode ? 'fas fa-sun' : 'fas fa-moon'}></i>
+                <span className="d-lg-none d-md-block">Switch mode</span>
+              </Button>
+            )}
+          </ThemeContext.Consumer>
+        </InputGroup>
+      </header>
       {ModifiedUserstate.length !== 0 ? (
         <div >
           <div style={{ margin: "0 1em" }}>

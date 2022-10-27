@@ -13,8 +13,8 @@
 
 .paragraph{
   color: rgb(136 146 176/var(--tw-text-opacity));
-  font-size: 1.875rem;
-    line-height: 2.25rem;
+  font-size: 2.5rem;
+    line-height: 1.3;
     margin-top: 1rem;
     margin-bottom: 1rem;
     font-weight: 600;
@@ -33,25 +33,33 @@ body {
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #fff;
   text-decoration: inherit;
+}
+.main-container{
+  overflow: hidden;
 }
 .home-page-layout {
   display: grid;
  grid-template-columns:20% auto 20%;
 }
- .span {
+ .span,
+ .span-right {
     border-left: 1px solid rgb(136 146 176/1);
     height: 200px;
      position:absolute;
-    left: 5%;
     top: 68%;
+}
+.span {
+left: 5%;
+}
+.span-right {
+  right: 5%;
 }
 .home-page-container {
   width: 100%;
   height: 100vh;
   display: flex;
-  align-items: center;
   flex-direction: column;
   justify-content: center;
   gap: 1em;
@@ -60,7 +68,8 @@ a {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-
+  color: rgb(204 214 252/1);
+  font-size: clamp(40px,8vw,80px);
 }
 h4{
   color:rgb(136 146 176/var(--tw-text-opacity));
@@ -85,7 +94,6 @@ button{
    font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
 }
 .user-title-text {
-  /* background-color: rgb(251, 250, 250); */
   background: rgba(0, 0, 0, 0.1);
   padding: 1.5rem 0;
   border-radius: 3px;
@@ -186,6 +194,8 @@ button{
 }
 
 .loader{
+  display: flex;
+  justify-content: center;
   text-align: center;
   border: 8px solid #f3f3f3;
   border-radius: 50%;
