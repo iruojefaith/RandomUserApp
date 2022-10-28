@@ -62,6 +62,7 @@ const Users = ({ apiResult }) => {
                         {data.name.last} {data.name.first}
                       </h4>
                       <div className="info-box" key={index}>
+
                         <p> <MdOutlineEmail /> {data.email}</p>
                         <p> <BsTelephone />   {data.cell}</p>
                         <Link to={`/users/${data.login.uuid}`}>
@@ -77,7 +78,7 @@ const Users = ({ apiResult }) => {
           </div>
           <Pagination
             currentPage={currentPage}
-            apiResult={apiResult} // to total amount of 100 result from
+            apiResult={apiResult} // to total amount of 100 result
             setcurrentPage={setcurrentPage} // Current Page
             postPerPage={postPerPage} // Post per page
           />
@@ -85,7 +86,10 @@ const Users = ({ apiResult }) => {
           <br />
         </div>
       ) : (
-        <div className="loader"></div>
+        <div className="loader-container">
+           <div className="loader"></div>
+        </div>
+
       )}
     </>
   );

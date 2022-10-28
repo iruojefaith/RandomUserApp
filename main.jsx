@@ -23,10 +23,7 @@ const IndexPage = () => {
   }, []);
 
   const router = createBrowserRouter([
-    {
-      path: "*",
-      element: <ErrorPage />,
-    },
+
     {
       path: "/",
       element: <App />,
@@ -38,6 +35,10 @@ const IndexPage = () => {
     {
       path: "/users/:id",
       element: <User apiResult={apiResult} />,
+    },
+      {
+      path: "*",
+      element: <ErrorPage />,
     },
   ]);
 
